@@ -1,14 +1,17 @@
 package rocky;
 
-public class temperature {
+public class temperature extends tonsillitisSymptoms{
 	
-	private int tHot;
-	private int TNormal;
-	private int tCool;
+	private int hot;
+	private int normal;
+	private int cool;
 	
-	tHot=10;
-	tNormal=1;
-	tCool=-10;
+	public temperature() {
+		
 	
+	hot=1;
+	normal=5;
+	cool=1;
+	}
 
 }

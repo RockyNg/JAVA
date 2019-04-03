@@ -1,12 +1,15 @@
 package rocky;
 //aches calculations
 
-public class aches {
+public class aches extends tonsillitisSymptoms{
 	private int aches;
 	private int noAches;
 	
-	aches=1;
-	noAches=-10;
-
+	public aches() {
+		
+	
+	aches=3;
+	noAches=4;
+	}
 
 }
