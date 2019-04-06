@@ -14,23 +14,14 @@ public class readfile
 		try 
 		{
 			x = new Scanner(new File("dataset.txt"));
-			
-			
-		}
-		catch(Exception e)
-		{
-			System.out.println("could not find file");
-		}
-		try 
-		{
 			y = new Scanner(new File("dataset.txt"));
 			
-			
 		}
 		catch(Exception e)
 		{
 			System.out.println("could not find file");
 		}
+		
 		
 		while(y.hasNextLine())
 		{
