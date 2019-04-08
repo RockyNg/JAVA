@@ -4,21 +4,32 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class gui  extends JFrame
+public class gui  extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel p1,p2,p3;
 	private JLabel label1,label2,label3;
 	private JRadioButton tempH,tempN,tempC,achesY,achesN,sThroatY,sThroatN;
 	private ButtonGroup group1,group2,group3;
-	private int a1,a2,a3,a4,a5,a6,a7;
+	private JButton b1;
+	private int a=9;
 	
+	 private ActionListener al = new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+		      System.out.println(a);
+		    }
+		  };
+
 	public gui()
 	{
 		super ("title");
 		setSize(300,200);
 		setLayout(new FlowLayout());
 		
-		
+		b1= new JButton("show");
 		
 		
 		tempH = new JRadioButton("Hot",false);
@@ -63,49 +74,47 @@ public class gui  extends JFrame
 		add(p3,BorderLayout.SOUTH);
 
 		
-		label1 = new JLabel("Temperature",25);
-		label2 = new JLabel("Aches",25);
-		label3 = new JLabel("Sore Throat",25);
+		label1 = new JLabel("Temperature");
+		label2 = new JLabel("Aches");
+		label3 = new JLabel("Sore Throat");
+		
 		p1.add(label1);
 		p2.add(label2);
 		p3.add(label3);
+		p3.add(b1);
+		
 		setVisible(true);
+		b1.addActionListener(this);
 		
-		a1 = 1;
-		a2 = 2;
-		a3 = 3;
-		a4 = 4;
-		a5 = 5;
-		a6 = 6;
-		a7 = 7;
 		
-		//tempH,tempN,tempC,achesY,achesN,ThroatY,sThroatN;
 		//wait for event to happen, pass in font object to constructor
-		tempH.addItemListener(new HandlerClass(itf);
-		tempN.addItemListener(new HandlerClass(itf));
-		tempC.addItemListener(new HandlerClass(bif));
-		achesY.addItemListener(new HandlerClass(bif));
-		achesN.addItemListener(new HandlerClass(bif));
-		sThroatY.addItemListener(new HandlerClass(bif));
-		sThroatN.addItemListener(new HandlerClass(bif));
 		
+		tempH.addActionListener(al);
+		tempN.addActionListener(al);
+		tempC.addActionListener(al);
+		achesY.addActionListener(al);
+		achesN.addActionListener(al);
+		sThroatY.addActionListener(al);
+		sThroatN.addActionListener(al);
 		
+		 
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() ==b1)
+		   {	
+		      
+			    JOptionPane.showMessageDialog(this,a);
+		  	
+			  	   
+		     	
+		   } 
 		
 	}
 	
-	private class HandlerClass implements ItemListener
-	{
-		private Font font;
-		
-		public HandlerClass (Font f)
-		{
-			font =f;
-		}
-		public void itemStateChanged(ItemEvent event)
-		{
-			tf.setFont(font);
-		}
-	}
+	
 	
 
 }
