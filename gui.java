@@ -17,12 +17,15 @@ public class gui  extends JFrame implements ActionListener
 	private JButton b1;
 	private int a=9;
 	
-	 private ActionListener al = new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		      System.out.println(a);
+	 private ActionListener al = new ActionListener() 
+	 {
+		    public void actionPerformed(ActionEvent e) 
+		    {
+		      gui.this.a=11;
+		     
 		    }
-		  };
-
+	 };
+	 
 	public gui()
 	{
 		super ("title");
@@ -118,3 +121,5 @@ public class gui  extends JFrame implements ActionListener
 	
 
 }
+
+	
