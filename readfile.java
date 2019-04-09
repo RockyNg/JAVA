@@ -56,31 +56,31 @@ public class readfile
 			String c = x.next();
 			String d = x.next();
 			
-			if ( a.equals("hot")||a.equals("Hot"))
+			if ( (a.equals("hot")||a.equals("Hot"))&&(d.equals("Yes")||d.equals("yes")))
 			{
 				a1++;
 			}
-			if ( a.equals("normal")||a.equals("Normal"))
+			if ( (a.equals("normal")||a.equals("Normal"))&&(d.equals("Yes")||d.equals("yes")))
 			{
 				a2++;
 			}
-			if ( a.equals("cool")||a.equals("Cool"))
+			if (( a.equals("cool")||a.equals("Cool"))&&(d.equals("Yes")||d.equals("yes")))
 			{
 				a3++;
 			}
-			if ( b.equals("Yes")||b.equals("yes"))
+			if (( b.equals("Yes")||b.equals("yes"))&&(d.equals("Yes")||d.equals("yes")))
 			{
 				b1++;
 			}
-			if ( b.equals("No")||b.equals("no"))
+			if ( (b.equals("No")||b.equals("no"))&&(d.equals("Yes")||d.equals("yes")))
 			{
 				b2++;
 			}
-			if ( c.equals("Yes")||c.equals("yes"))
+			if ( ((c.equals("Yes")||c.equals("yes")))&&(d.equals("Yes")||d.equals("yes")))
 			{
 				c1++;
 			}
-			if ( c.equals("No")||c.equals("no"))
+			if ( (c.equals("No")||c.equals("no"))&&(d.equals("Yes")||d.equals("yes")))
 			{
 				c2++;
 			}
@@ -120,7 +120,7 @@ public class readfile
 		c12=c2;
 		d11=d1;
 		d12=d2;
-		t12=t2;
+		t12=d11+d12;
 		
 		
 	}
