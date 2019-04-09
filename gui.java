@@ -9,6 +9,8 @@ public class gui  extends JFrame implements ActionListener
 	/**
 	 * 
 	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 	private JPanel p1,p2,p3,p4,p5,p6;
 	private JLabel label1,label2,label3;
