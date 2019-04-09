@@ -10,7 +10,7 @@ public class gui  extends JFrame implements ActionListener
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel p1,p2,p3;
+	private JPanel p1,p2,p3,p4,p5,p6;
 	private JLabel label1,label2,label3;
 	private JRadioButton tempH,tempN,tempC,achesY,achesN,sThroatY,sThroatN;
 	private ButtonGroup group1,group2,group3;
@@ -29,7 +29,8 @@ public class gui  extends JFrame implements ActionListener
 	public gui()
 	{
 		super ("title");
-		setSize(300,200);
+		setSize(400,500);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new FlowLayout());
 		
 		b1= new JButton("show");
@@ -51,7 +52,9 @@ public class gui  extends JFrame implements ActionListener
 		add(sThroatY);
 		add(sThroatN);
 		
-		group1 = group2 = group3 = new ButtonGroup();
+		group1 =new ButtonGroup();
+		group2 =new ButtonGroup();
+		group3 = new ButtonGroup();
 		
 		
 		group1.add(tempH);
@@ -64,17 +67,37 @@ public class gui  extends JFrame implements ActionListener
 		group3.add(sThroatY);
 		group3.add(sThroatN);
 		
-		p1 = p2 = p3 = new JPanel(new FlowLayout());
+		p1 = new JPanel();
+		p2 = new JPanel();
+		p3 = new JPanel();
+		p4 = new JPanel();
+		p5 = new JPanel();
+		p6 = new JPanel();
+	
+	
 	
 
 	
 		p1.setBackground(Color.WHITE);
 		p2.setBackground(Color.GREEN);
 		p3.setBackground(Color.YELLOW);
+		p4.setBackground(Color.BLACK);
+		p5.setBackground(Color.BLACK);
+		p6.setBackground(Color.BLACK);
+	
 		
-		add(p1,BorderLayout.CENTER);
-		add(p2,BorderLayout.NORTH);
-		add(p3,BorderLayout.SOUTH);
+	
+		add(p4,BorderLayout.NORTH);
+		add(p5,BorderLayout.CENTER);
+		add(p6,BorderLayout.SOUTH);
+		
+
+		p4.add(p1,BorderLayout.NORTH);
+		p5.add(p2,BorderLayout.CENTER);
+		p6.add(p3,BorderLayout.SOUTH);
+		
+	
+
 
 		
 		label1 = new JLabel("Temperature");
@@ -82,8 +105,17 @@ public class gui  extends JFrame implements ActionListener
 		label3 = new JLabel("Sore Throat");
 		
 		p1.add(label1);
+		p1.add(tempH);
+		p1.add(tempN);
+		p1.add(tempC);
+		
 		p2.add(label2);
+		p2.add(achesY);
+		p2.add(achesN);
+		
 		p3.add(label3);
+		p3.add(sThroatY);
+		p3.add(sThroatN);
 		p3.add(b1);
 		
 		setVisible(true);
