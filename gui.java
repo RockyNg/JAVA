@@ -1,8 +1,10 @@
 package rocky;
 
 import java.awt.*;
+
 import java.awt.event.*;
 import javax.swing.*;
+import java.text.DecimalFormat;
 
 public class gui  extends JFrame implements ActionListener
 {
@@ -19,6 +21,7 @@ public class gui  extends JFrame implements ActionListener
 	private ButtonGroup group1,group2,group3;
 	private JButton b1;
 	private double temp,aches,soreThroat,chance=0;
+	private int gate=0;
 	
 	
 	nbayes hey4 =new nbayes();
@@ -210,8 +213,16 @@ public class gui  extends JFrame implements ActionListener
 		if (e.getSource() ==b1)
 		   {	
 			chance=((soreThroat*aches)*(temp*dest[3]));
-			    JOptionPane.showMessageDialog(this,chance);
-		  	
+			if(chance==0)
+			{
+				JOptionPane.showMessageDialog(this,"you have not enter all your symtopms");
+			}
+			else
+			{
+				DecimalFormat df = new DecimalFormat("#.00"); 
+				chance*=100;
+			    JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis");
+			}
 			  	   
 		     	
 		   } 
