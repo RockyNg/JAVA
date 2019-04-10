@@ -1,6 +1,8 @@
+/*
+ * Author:Rocky Ng
+ * Date: 11-04-19
+ * Description: A machine learning prediction program for Tongsillitis*/
 package rocky;
-
-import java.util.Scanner;
 
 import javax.swing.JFrame;
 
@@ -10,31 +12,25 @@ public class Control {
 	
 	public static void main(String[] args) {
 		
+		//read from the data set given and store the training portion
 		readfile data = new readfile();
-		
 		data.openfile();
-		
 		data.readFile();
 		data.closeFile();
 	
 
 	
+		//run the calculations for the possibility of having each symptom
+		temperature calcTemp =new temperature();
+		aches calcAches =new aches();
+		soreThroat calcSoreThroat =new soreThroat();
 		
-		temperature bruh =new temperature();
-		aches bruh2 =new aches();
-		soreThroat bruh3 =new soreThroat();
+		//collect all the calculations from each class into 1 class
+		nbayes gatherCalc =new nbayes();
 		
-		nbayes bruh23 =new nbayes();
-		test bruh33 =new test();
-		gui go = new gui();
+		//gui time
+		gui runThisThing = new gui();
 		
-		
-		
-
-		
-		
-		 
-		
-		
+	
 	}
 }

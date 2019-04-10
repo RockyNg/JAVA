@@ -1,31 +1,28 @@
 package rocky;
 
 import java.awt.*;
-
 import java.awt.event.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
 
 public class gui  extends JFrame implements ActionListener
 {
-	/**
-	 * 
-	 */
 	
-
-	
-	private static final long serialVersionUID = 1L;
-	private JPanel p1,p2,p3,p4,p5,p6;
-	private JLabel label1,label2,label3;
+	//declare components needed for the gui
+	private JPanel p1,p2,p3;
+	private JLabel label1,label2,label3,label4;
 	private JRadioButton tempH,tempN,tempC,achesY,achesN,sThroatY,sThroatN;
 	private ButtonGroup group1,group2,group3;
 	private JButton b1;
+	private Font big;
+	//declare variables to store user input
 	private double temp,aches,soreThroat,chance=0;
-	private int gate=0;
 	
+	//bring in calculations from nbayes class
+	nbayes finalCalculations =new nbayes();
 	
-	nbayes hey4 =new nbayes();
-	private double[] dest = ((hey4.results).clone());
+	//put them into last list
+	private double[] lastList = ((finalCalculations.results).clone());
 	
 	
 
@@ -33,7 +30,7 @@ public class gui  extends JFrame implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.temp=dest[0];
+			gui.this.temp=lastList[0];
 			
 		}
 		
@@ -42,7 +39,7 @@ public class gui  extends JFrame implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.temp=dest[1];
+			gui.this.temp=lastList[1];
 		     
 		}
 		
@@ -51,7 +48,7 @@ public class gui  extends JFrame implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.temp=dest[2];
+			gui.this.temp=lastList[2];
 		     
 		}
 		
@@ -60,7 +57,7 @@ public class gui  extends JFrame implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.aches=dest[4];
+			gui.this.aches=lastList[4];
 		     
 		}
 		
@@ -69,7 +66,7 @@ public class gui  extends JFrame implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.aches=dest[5];
+			gui.this.aches=lastList[5];
 		     
 		}
 		
@@ -78,7 +75,7 @@ public class gui  extends JFrame implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.soreThroat=dest[6];
+			gui.this.soreThroat=lastList[6];
 		     
 		}
 		
@@ -87,9 +84,9 @@ public class gui  extends JFrame implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.soreThroat=dest[7];
+			gui.this.soreThroat=lastList[7];
 		     
-			soreThroat=dest[7];
+			
 			
 		}
 		
@@ -114,6 +111,7 @@ public class gui  extends JFrame implements ActionListener
 		achesN = new JRadioButton("No",false);
 		sThroatY = new JRadioButton("Yes",false);
 		sThroatN = new JRadioButton("No",false);
+		
 		
 		add(tempH);
 		add(tempN);
@@ -141,39 +139,36 @@ public class gui  extends JFrame implements ActionListener
 		p1 = new JPanel();
 		p2 = new JPanel();
 		p3 = new JPanel();
-		p4 = new JPanel();
-		p5 = new JPanel();
-		p6 = new JPanel();
+		
 	
 	
 	
 
 	
 		p1.setBackground(Color.WHITE);
-		p2.setBackground(Color.GREEN);
-		p3.setBackground(Color.YELLOW);
-		p4.setBackground(Color.BLACK);
-		p5.setBackground(Color.BLACK);
-		p6.setBackground(Color.BLACK);
+		p2.setBackground(Color.WHITE);
+		p3.setBackground(Color.WHITE);
+	
+		setBackground(Color.pink);
 	
 		
-	
-		add(p4,BorderLayout.NORTH);
-		add(p5,BorderLayout.CENTER);
-		add(p6,BorderLayout.SOUTH);
 		
 
-		p4.add(p1,BorderLayout.NORTH);
-		p5.add(p2,BorderLayout.CENTER);
-		p6.add(p3,BorderLayout.SOUTH);
 		
 	
 
-
+		big = new Font("Serif", Font.ITALIC,20);
 		
-		label1 = new JLabel("Temperature");
+		label1 = new JLabel("Temperature");	
 		label2 = new JLabel("Aches");
 		label3 = new JLabel("Sore Throat");
+		label4 = new JLabel("Please enter your symptoms below:");
+		
+		label4.setFont(big);
+		add(label4,BorderLayout.NORTH);
+		add(p1,BorderLayout.CENTER);
+		add(p2,BorderLayout.SOUTH);
+		add(p3,BorderLayout.SOUTH);
 		
 		p1.add(label1);
 		p1.add(tempH);
@@ -188,6 +183,7 @@ public class gui  extends JFrame implements ActionListener
 		p3.add(sThroatY);
 		p3.add(sThroatN);
 		p3.add(b1);
+		
 		
 		setVisible(true);
 		b1.addActionListener(this);
@@ -212,16 +208,27 @@ public class gui  extends JFrame implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() ==b1)
 		   {	
-			chance=((soreThroat*aches)*(temp*dest[3]));
+			chance=((soreThroat*aches)*(temp*lastList[3]));
 			if(chance==0)
 			{
 				JOptionPane.showMessageDialog(this,"you have not enter all your symtopms");
 			}
 			else
 			{
+				
 				DecimalFormat df = new DecimalFormat("#.00"); 
 				chance*=100;
-			    JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis");
+				if(chance>=10)
+				{
+					JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis\n YOU HAVE TONSILLITIS!");
+					
+				}
+				else
+				{
+					
+				
+			    JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis\n YOU DON'T HAVE TONGSILLITS");
+			}
 			}
 			  	   
 		     	
