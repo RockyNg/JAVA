@@ -18,6 +18,7 @@ public class gui  extends JFrame implements ActionListener
 	//declare variables to store user input
 	private double temp,aches,soreThroat,chance=0;
 	
+	private static String[] people= {"bacon","bacon2","bacon3","bacon4"};
 	//bring in calculations from nbayes class
 	nbayes finalCalculations =new nbayes();
 	
@@ -139,23 +140,11 @@ public class gui  extends JFrame implements ActionListener
 		p1 = new JPanel();
 		p2 = new JPanel();
 		p3 = new JPanel();
-		
-	
-	
-	
 
-	
 		p1.setBackground(Color.WHITE);
 		p2.setBackground(Color.WHITE);
 		p3.setBackground(Color.WHITE);
-	
-		setBackground(Color.pink);
-	
-		
-		
 
-		
-	
 
 		big = new Font("Serif", Font.ITALIC,20);
 		
@@ -187,9 +176,8 @@ public class gui  extends JFrame implements ActionListener
 		
 		setVisible(true);
 		b1.addActionListener(this);
-		
-		
-		//wait for event to happen, pass in font object to constructor
+
+		//wait for event to happen, whatever the user selects will enter the correct probability
 		  
 		tempH.addActionListener(hot);
 		tempN.addActionListener(normal);
@@ -199,9 +187,7 @@ public class gui  extends JFrame implements ActionListener
 		sThroatY.addActionListener(yesS);
 		sThroatN.addActionListener(noS);
 		
-		 
-		
-		
+
 	}
 
 	@Override
@@ -211,7 +197,7 @@ public class gui  extends JFrame implements ActionListener
 			chance=((soreThroat*aches)*(temp*lastList[3]));
 			if(chance==0)
 			{
-				JOptionPane.showMessageDialog(this,"you have not enter all your symtopms");
+				JOptionPane.showMessageDialog(this,"You have not enter all your symptpms");
 			}
 			else
 			{
@@ -227,7 +213,7 @@ public class gui  extends JFrame implements ActionListener
 				{
 					
 				
-			    JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis\n YOU DON'T HAVE TONGSILLITS");
+			    JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis\n You don't have tongsillitis");
 			}
 			}
 			  	   
