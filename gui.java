@@ -9,7 +9,9 @@ public class gui  extends JFrame implements ActionListener
 	/**
 	 * 
 	 */
+	nbayes hey3 =new nbayes();
 	
+
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel p1,p2,p3,p4,p5,p6;
@@ -17,19 +19,24 @@ public class gui  extends JFrame implements ActionListener
 	private JRadioButton tempH,tempN,tempC,achesY,achesN,sThroatY,sThroatN;
 	private ButtonGroup group1,group2,group3;
 	private JButton b1;
-	private int a=9;
+	private double a=9;
+
 	
-	 private ActionListener al = new ActionListener() 
-	 {
-		    public void actionPerformed(ActionEvent e) 
-		    {
-		      gui.this.a=11;
+	private ActionListener al = new ActionListener() 
+			{
+		
+		
+		
+		public void actionPerformed(ActionEvent e) 
+		{
+			gui.this.a=a;
 		     
-		    }
+		}
 	 };
 	 
 	public gui()
 	{
+		
 		super ("title");
 		setSize(400,500);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,7 +132,7 @@ public class gui  extends JFrame implements ActionListener
 		
 		
 		//wait for event to happen, pass in font object to constructor
-		
+		  
 		tempH.addActionListener(al);
 		tempN.addActionListener(al);
 		tempC.addActionListener(al);
@@ -155,5 +162,3 @@ public class gui  extends JFrame implements ActionListener
 	
 
 }
-
-	

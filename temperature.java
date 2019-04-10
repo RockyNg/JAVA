@@ -4,13 +4,16 @@ package rocky;
 public class temperature {
 	
 	readfile hey =new readfile();
+
+	
+	
 	
 	private int[] dest = ((hey.result).clone());
 	private double hotHas;
 	private double normalHas;
 	private double coolHas;
 	private double tong;
-	private static double num1,num2,num3,num4,num5;
+	private static double num1,num2,num3,num4;
 	
 	
 	
@@ -22,14 +25,13 @@ public class temperature {
 		tong=(double)dest[7]/dest[9];
 		
 		
+		
 		num1=hotHas;
 		num2=normalHas;
 		num3=coolHas;
+		num4=tong;
 		
-		System.out.println(hotHas);
-		System.out.println(normalHas);
-		System.out.println(coolHas);
-		System.out.println(tong);
+	
 		
 		
 		
@@ -39,11 +41,12 @@ public class temperature {
 	public double[] calc()
 	{
 		
-		double ar[] = new double [3];
+		double ar[] = new double [4];
 		
 		ar[0]=num1;
 		ar[1]=num2;
 		ar[2]=num3;
+		ar[3]=num4;
 	
 		return ar;
 		

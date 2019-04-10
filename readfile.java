@@ -108,7 +108,7 @@ public class readfile
 		System.out.println(b1+"\t has aches\t\t"+b2+"\t doesn't have aches");
 		System.out.println(c1+"\t has sore throat\t"+c2+"\t doesn't have sore throat");
 		System.out.println(d1+"\t has tonsillitis\t"+d2+"\t doesn't have tonsillitis");
-		System.out.println(l+"\t rows all together");
+		System.out.println(l-1+"\t rows all together");
 		System.out.println(Math.floor(l*s)+"\t training rows");
 
 		a11=a1;
