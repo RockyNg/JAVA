@@ -19,14 +19,15 @@ public class Control {
 	
 
 	
-		//gui go = new gui();
+		
 		temperature bruh =new temperature();
 		aches bruh2 =new aches();
 		soreThroat bruh3 =new soreThroat();
 		
 		nbayes bruh23 =new nbayes();
 		test bruh33 =new test();
-		bruh.calc();
+		gui go = new gui();
+		
 		
 		
 

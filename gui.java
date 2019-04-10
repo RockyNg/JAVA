@@ -9,7 +9,6 @@ public class gui  extends JFrame implements ActionListener
 	/**
 	 * 
 	 */
-	nbayes hey3 =new nbayes();
 	
 
 	
@@ -19,20 +18,78 @@ public class gui  extends JFrame implements ActionListener
 	private JRadioButton tempH,tempN,tempC,achesY,achesN,sThroatY,sThroatN;
 	private ButtonGroup group1,group2,group3;
 	private JButton b1;
-	private double a=9;
-
+	private double temp,aches,soreThroat=0;
 	
-	private ActionListener al = new ActionListener() 
-			{
-		
-		
-		
+	
+	nbayes hey4 =new nbayes();
+	private double[] dest = ((hey4.results).clone());
+	
+	
+
+	private ActionListener hot = new ActionListener() 
+	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			gui.this.a=a;
+			gui.this.temp=dest[0];
 		     
 		}
-	 };
+		
+	};
+	private ActionListener normal = new ActionListener() 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			gui.this.temp=dest[1];
+		     
+		}
+		
+	};
+	private ActionListener cool = new ActionListener() 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			gui.this.temp=dest[2];
+		     
+		}
+		
+	};
+	private ActionListener yesA = new ActionListener() 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			gui.this.aches=dest[4];
+		     
+		}
+		
+	};
+	private ActionListener noA = new ActionListener() 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			gui.this.aches=dest[5];
+		     
+		}
+		
+	};
+	private ActionListener yesS = new ActionListener() 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			gui.this.soreThroat=dest[6];
+		     
+		}
+		
+	};
+	private ActionListener noS = new ActionListener() 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			gui.this.soreThroat=dest[7];
+		     
+		}
+		
+	};
+	
 	 
 	public gui()
 	{
@@ -133,13 +190,13 @@ public class gui  extends JFrame implements ActionListener
 		
 		//wait for event to happen, pass in font object to constructor
 		  
-		tempH.addActionListener(al);
-		tempN.addActionListener(al);
-		tempC.addActionListener(al);
-		achesY.addActionListener(al);
-		achesN.addActionListener(al);
-		sThroatY.addActionListener(al);
-		sThroatN.addActionListener(al);
+		tempH.addActionListener(hot);
+		tempN.addActionListener(normal);
+		tempC.addActionListener(cool);
+		achesY.addActionListener(yesA);
+		achesN.addActionListener(noA);
+		sThroatY.addActionListener(yesS);
+		sThroatN.addActionListener(noS);
 		
 		 
 		
@@ -150,7 +207,7 @@ public class gui  extends JFrame implements ActionListener
 		if (e.getSource() ==b1)
 		   {	
 		      
-			    JOptionPane.showMessageDialog(this,a);
+			    JOptionPane.showMessageDialog(this,(temp*aches*soreThroat));
 		  	
 			  	   
 		     	
