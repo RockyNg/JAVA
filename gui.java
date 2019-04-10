@@ -18,7 +18,7 @@ public class gui  extends JFrame implements ActionListener
 	private JRadioButton tempH,tempN,tempC,achesY,achesN,sThroatY,sThroatN;
 	private ButtonGroup group1,group2,group3;
 	private JButton b1;
-	private double temp,aches,soreThroat=0;
+	private double temp,aches,soreThroat,chance=0;
 	
 	
 	nbayes hey4 =new nbayes();
@@ -31,7 +31,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.temp=dest[0];
-		     
+			
 		}
 		
 	};
@@ -86,6 +86,8 @@ public class gui  extends JFrame implements ActionListener
 		{
 			gui.this.soreThroat=dest[7];
 		     
+			soreThroat=dest[7];
+			
 		}
 		
 	};
@@ -200,14 +202,15 @@ public class gui  extends JFrame implements ActionListener
 		
 		 
 		
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() ==b1)
 		   {	
-		      
-			    JOptionPane.showMessageDialog(this,(temp*aches*soreThroat));
+			chance=((soreThroat*aches)*(temp*dest[3]));
+			    JOptionPane.showMessageDialog(this,chance);
 		  	
 			  	   
 		     	
