@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 public class gui  extends JFrame implements ActionListener
 {
@@ -15,13 +16,15 @@ public class gui  extends JFrame implements ActionListener
 	private JRadioButton tempH,tempN,tempC,achesY,achesN,sThroatY,sThroatN;
 	private ButtonGroup group1,group2,group3;
 	private JButton b1,b2;
+	
 	private Font big;
-	private String one,two,three,four="hey";
+	private String one,two,three,four;
 	//declare variables to store user input
 	private double temp,aches,soreThroat,chance=0;
 	
 	
 	ArrayList<String> people = new ArrayList<String>();
+	
 	//bring in calculations from nbayes class
 	nbayes finalCalculations =new nbayes();
 	
@@ -164,14 +167,27 @@ public class gui  extends JFrame implements ActionListener
 		add(p4,BorderLayout.SOUTH);
 		
 		
-		people.add("Temperature, ____Aches, ____Sore Throat,_____Tongsillitis");
-		people.add("Person 1:"+one+","+two+","+three+","+four);
-		people.add(two);
-		people.add(three);
-		people.add(four);
-		JList<String> showList = new JList<>(people.toArray(new String[0]));
-		JScrollPane scrollPane = new JScrollPane(showList);
-		add(scrollPane);
+		DefaultListModel<String> dlm = new DefaultListModel<String>();
+	    JList<String> list = new JList<>(dlm);
+	    add(new JScrollPane(list));
+	    add(new JButton("Add") {
+	      {
+	        addActionListener(new ActionListener() {
+	          public void actionPerformed(ActionEvent e) {
+	            dlm.addElement(one);
+	          }
+	        });
+	      }
+	    }, BorderLayout.SOUTH);
+		 /*people.add("Temperature, ____Aches, ____Sore Throat, ____Tongsillitis");
+		
+
+			
+			JList<String> showList = new JList<>(people.toArray(new String[0]));
+			JScrollPane scrollPane = new JScrollPane(showList);
+			add(scrollPane);*/
+			
+			
 		
 		 
 		 
@@ -189,6 +205,8 @@ public class gui  extends JFrame implements ActionListener
 		p3.add(sThroatN);
 		p4.add(b1);
 		p4.add(b2);
+		
+
 		
 		
 		setVisible(true);
@@ -218,6 +236,7 @@ public class gui  extends JFrame implements ActionListener
 		
 		if (e.getSource() ==b1)
 		   {	
+			 
 			chance=((soreThroat*aches)*(temp*lastList[3]));
 	
 			if(chance==0)
@@ -244,26 +263,29 @@ public class gui  extends JFrame implements ActionListener
 			    four="No";
 			    
 			}
-			
 				
 			  	   
-		     	
+				
 		   } 
+			people.add("Person 1:"+one+","+two+","+three+","+four); 
 			
 			}
 		if (e.getSource() ==b2)
+			
 		   {	
 			
 			
 			  
-			      temp=0;
+			      	temp=0;
 			        aches=0;
 			        soreThroat=0;
 			        chance=0;
 			        group1.clearSelection();
 			        group2.clearSelection();
 			        group3.clearSelection();
-			        
+			   
+			       
+			       
 		   } 
 		
 	}
