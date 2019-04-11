@@ -3,39 +3,45 @@ package rocky;
 
 public class aches 
 {
-	readfile hey =new readfile();
+	//bring in data from readfile
+	readfile data2 =new readfile();
 	
-	private int[] dest = ((hey.result).clone());
-	private double achesY;
-	private double achesN;
-	private static double num1,num2;
+	//cloning the original array 
+	private int[] OriginalData2 = ((data2.result1).clone());
+	private double achesHasY;
+	private double achesHasN;
+	private double achesNHasY;
+	private double achesNHasN;
+	private static double num1,num2,num3,num4;
 	
 	public aches() 
 	{
-		achesY=(double)dest[3]/dest[7];
-		achesN=(double)dest[4]/dest[7];
-		num1=achesY;
-		num2=achesN;
+		//naive bayes calculations
+		achesHasY=(double)OriginalData2[6]/OriginalData2[14];
+		achesHasN=(double)OriginalData2[7]/OriginalData2[14];
+		achesNHasY=(double)OriginalData2[8]/OriginalData2[15];
+		achesNHasN=(double)OriginalData2[9]/OriginalData2[15];
 		
-		
-		
-	
-	
+		num1=achesHasY;
+		num2=achesHasN;
+		num3=achesNHasY;
+		num4=achesNHasN;
+
 	}
-	public double[] calc()
+	public double[] set3()
 	{
-		
-		double ar[] = new double [2];
+		//putting calculated data into array
+		double ar[] = new double [4];
 		
 		ar[0]=num1;
 		ar[1]=num2;
-		
-	
+		ar[2]=num3;
+		ar[3]=num4;
+
 		return ar;
 		
 	}
-	double[] result=calc();
-
+	double[] resultAches=set3();
 
 }
 

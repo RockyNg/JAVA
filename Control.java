@@ -4,21 +4,18 @@
  * Description: A machine learning prediction program for Tongsillitis*/
 package rocky;
 
-import javax.swing.JFrame;
-
 public class Control {
 
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		
 		//read from the data set given and store the training portion
 		readfile data = new readfile();
 		data.openfile();
 		data.readFile();
 		data.closeFile();
-	
-
 	
 		//run the calculations for the possibility of having each symptom
 		temperature calcTemp =new temperature();
@@ -31,6 +28,5 @@ public class Control {
 		//gui time
 		gui runThisThing = new gui();
 		
-	
 	}
 }

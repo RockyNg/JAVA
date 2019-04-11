@@ -7,14 +7,17 @@ import java.util.*;
 public class readfile 
 {
 	private Scanner x,y;
-	private int a1,a2,a3,b1,b2,c1,c2,d1,d2,train,t2,l=0;
-	private static int a11,a12,a13,b11,b12,c11,c12,d11,d12,t12;
-	private double s=0.70;
+	private int HotYesTon,NormalYesTon,CoolYesTon,AchesYesTon,NoAchesYesTon,YesSThroatYesTon,NoSThroatYesTon,HotNoTon,NormalNoTon=0;
+	private int CoolNoTon,AchesNoTon,NoAchesNoTon,YesSThroatNoTon,NoSThroatNoTon,HaveTon,HaveNoTon,train,t2,rows=0;
+	private static int a11,a12,a13,b11,b12,c11,c12,a14,a15,a16,b13,b14,c13,c14,d11,d12,t12;
+	private double practise=0.70;
 	
+	//find the file
 	public void openfile()
 	{
 		try 
 		{
+			//read in data set x for every data, y for row counting
 			x = new Scanner(new File("dataset.txt"));
 			y = new Scanner(new File("dataset.txt"));
 			
@@ -24,23 +27,24 @@ public class readfile
 			System.out.println("could not find file");
 		}
 		
-		
+		//count the rows in data set
 		while(y.hasNextLine())
 		{
 			String line =y.nextLine();
-			l++;
+			rows++;
 			
 		}
 		
 	}	
-	
+	//return rows 
 	public int getLineCounter()
 	{
-		return l;
+		return rows;
 	}
+	//return 70% of rows to practise on
 	public int getT2()
 	{
-		t2=(int)(l*s);
+		t2=(int)(rows*practise+1);
 		t12=t2;
 		return t2;
 	}
@@ -48,107 +52,174 @@ public class readfile
 	
 	public void readFile()
 	{
-		
+		//read content
 		while(x.hasNext())
 		{
+			//every 4 data is read in as Temperature, Aches, Sore Throat and Tonsillitis
 			String a = x.next();
 			String b = x.next();
 			String c = x.next();
 			String d = x.next();
 			
+			//if first element is hot and 4th element is yes then HotYesTon plus 1 
 			if ( (a.equals("hot")||a.equals("Hot"))&&(d.equals("Yes")||d.equals("yes")))
 			{
-				a1++;
+				HotYesTon++;
 			}
 			if ( (a.equals("normal")||a.equals("Normal"))&&(d.equals("Yes")||d.equals("yes")))
 			{
-				a2++;
+				NormalYesTon++;
 			}
 			if (( a.equals("cool")||a.equals("Cool"))&&(d.equals("Yes")||d.equals("yes")))
 			{
-				a3++;
+				CoolYesTon++;
 			}
+			
+			//if first element is hot and 4th element is no then HotNoTon plus 1 
+			if ( (a.equals("hot")||a.equals("Hot"))&&(d.equals("No")||d.equals("no")))
+			{
+				HotNoTon++;
+			}
+			if ( (a.equals("normal")||a.equals("Normal"))&&(d.equals("No")||d.equals("no")))
+			{
+				NormalNoTon++;
+			}
+			if (( a.equals("cool")||a.equals("Cool"))&&(d.equals("No")||d.equals("no")))
+			{
+				CoolNoTon++;
+			}
+			
+			//Aches
 			if (( b.equals("Yes")||b.equals("yes"))&&(d.equals("Yes")||d.equals("yes")))
 			{
-				b1++;
+				AchesYesTon++;
 			}
 			if ( (b.equals("No")||b.equals("no"))&&(d.equals("Yes")||d.equals("yes")))
 			{
-				b2++;
+				NoAchesYesTon++;
 			}
+			if (( b.equals("Yes")||b.equals("yes"))&&(d.equals("No")||d.equals("no")))
+			{
+				AchesNoTon++;
+			}
+			if ( (b.equals("No")||b.equals("no"))&&(d.equals("No")||d.equals("no")))
+			{
+				NoAchesNoTon++;
+			}
+			
+			//Sore Throat
 			if ( ((c.equals("Yes")||c.equals("yes")))&&(d.equals("Yes")||d.equals("yes")))
 			{
-				c1++;
+				YesSThroatYesTon++;
 			}
 			if ( (c.equals("No")||c.equals("no"))&&(d.equals("Yes")||d.equals("yes")))
 			{
-				c2++;
+				NoSThroatYesTon++;
 			}
+			if ( ((c.equals("Yes")||c.equals("yes")))&&(d.equals("No")||d.equals("no")))
+			{
+				YesSThroatNoTon++;
+			}
+			if ( (c.equals("No")||c.equals("no"))&&(d.equals("No")||d.equals("no")))
+			{
+				NoSThroatNoTon++;
+			}
+			
+			//Tonsillitis calc
 			if ( d.equals("Yes")||d.equals("yes"))
 			{
-				d1++;
+				HaveTon++;
 			}
 			if ( d.equals("No")||d.equals("no"))
 			{
-				d2++;
+				HaveNoTon++;
 			}
 			
+			//training rows counter
 			train++;
+			
+			//prints out data set 
 			System.out.printf("%s %s %s %s\n", a,b,c,d);
 			
-			
-			if(train>(l*s) )
+			//if training counter exceeds training rows then exit loop
+			if(train>(rows*practise+1) )
 			{
 				break;
 			}
 
-		}
+		}//end while loop
+		
+		//prints out data acquired
+		System.out.println("\nThese people have tong:\n");
 
-		System.out.println(a1+"\t hot\t\t\t"+a2+"\t normal\t\t\t\t"+a3+"\t cool");
-		System.out.println(b1+"\t has aches\t\t"+b2+"\t doesn't have aches");
-		System.out.println(c1+"\t has sore throat\t"+c2+"\t doesn't have sore throat");
-		System.out.println(d1+"\t has tonsillitis\t"+d2+"\t doesn't have tonsillitis");
-		System.out.println(l-1+"\t rows all together");
-		System.out.println(Math.floor(l*s)+"\t training rows");
+		System.out.println(HotYesTon+"\t hot\t\t\t"+NormalYesTon+"\t normal\t\t\t\t"+CoolYesTon+"\t cool");
+		System.out.println(AchesYesTon+"\t has aches\t\t"+NoAchesYesTon+"\t doesn't have aches");
+		System.out.println(YesSThroatYesTon+"\t has sore throat\t"+NoSThroatYesTon+"\t doesn't have sore throat");
+		System.out.println("\nThese people do not have tong:\n");
 
-		a11=a1;
-		a12=a2;
-		a13=a3;
-		b11=b1;
-		b12=b2;
-		c11=c1;
-		c12=c2;
-		d11=d1;
-		d12=d2;
+		System.out.println(HotNoTon+"\t hot\t\t\t"+NormalNoTon+"\t normal\t\t\t\t"+CoolNoTon+"\t cool");
+		System.out.println(AchesNoTon+"\t has aches\t\t"+NoAchesNoTon+"\t doesn't have aches");
+		System.out.println(YesSThroatNoTon+"\t has sore throat\t"+NoSThroatNoTon+"\t doesn't have sore throat\n");
+		System.out.println(HaveTon+"\t has tonsillitis\t"+HaveNoTon+"\t doesn't have tonsillitis\n");
+
+		System.out.println(rows-1+"\t rows all together");
+		System.out.println(Math.floor(rows*practise+1)+"\t training rows");
+
+		//puts data into static variable 
+		a11=HotYesTon;
+		a12=NormalYesTon;
+		a13=CoolYesTon;
+		a14=HotNoTon;
+		a15=NormalNoTon;
+		a16=CoolNoTon;
+		b11=AchesYesTon;
+		b12=NoAchesYesTon;
+		b13=AchesNoTon;
+		b14=NoAchesNoTon;
+		c11=YesSThroatYesTon;
+		c12=NoSThroatYesTon;
+		c13=YesSThroatNoTon;
+		c14=NoSThroatNoTon;
+		d11=HaveTon;
+		d12=HaveNoTon;
 		t12=d11+d12;
 		
 		
-	}
-	public int[] calc()
+	}//end readfile method
+	
+	//put data into array 
+	public int[] set1()
 	{
 		
-		int ar[] = new int[10];
+		int array1[] = new int[17];
 		
-		ar[0]=a11;
-		ar[1]=a12;
-		ar[2]=a13;
-		ar[3]=b11;
-		ar[4]=b12;
-		ar[5]=c11;
-		ar[6]=c12;
-		ar[7]=d11;
-		ar[8]=d12;
-		ar[9]=t12;
+		array1[0]=a11;
+		array1[1]=a12;
+		array1[2]=a13;
+		array1[3]=a14;
+		array1[4]=a15;
+		array1[5]=a16;
+		array1[6]=b11;
+		array1[7]=b12;
+		array1[8]=b13;
+		array1[9]=b14;
+		array1[10]=c11;
+		array1[11]=c12;
+		array1[12]=c13;
+		array1[13]=c14;
+		array1[14]=d11;
+		array1[15]=d12;
+		array1[16]=t12;
 		
-		return ar;
+		return array1;
 		
-	}
-	int[] result=calc();
+	}//end array method
+	
+	int[] result1=set1();
 	
 	public void closeFile()
 	{
 		x.close();
 	}
-	
 	
 };

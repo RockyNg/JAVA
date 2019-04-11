@@ -1,56 +1,61 @@
 package rocky;
 
-
 public class temperature {
 	
-	readfile hey =new readfile();
+	//bring in data from readfile
+	readfile data1 =new readfile();
 
-	
-	
-	
-	private int[] dest = ((hey.result).clone());
-	private double hotHas;
-	private double normalHas;
-	private double coolHas;
-	private double tong;
-	private static double num1,num2,num3,num4;
+	//cloning the original array 
+	private int[] originalData = ((data1.result1).clone());
+	private double hotHas ,normalHas,coolHas,tong,hotNHas ,normalNHas,coolNHas,Ntong;
+	private static double num1,num2,num3,num4,num5,num6,num7,num8;
 	
 	
 	
 	public temperature()
 	{
-		hotHas=(double)dest[0]/dest[7];
-		normalHas=(double)dest[1]/dest[7];
-		coolHas=(double)dest[2]/dest[7];
-		tong=(double)dest[7]/dest[9];
+		//naive bayes calculations
+		hotHas=(double)originalData[0]/originalData[14];
+		normalHas=(double)originalData[1]/originalData[14];
+		coolHas=(double)originalData[2]/originalData[14];
+		tong=(double)originalData[14]/originalData[16];
 		
+		hotNHas=(double)originalData[3]/originalData[15];
+		normalNHas=(double)originalData[4]/originalData[15];
+		coolNHas=(double)originalData[5]/originalData[15];
+		Ntong=(double)originalData[15]/originalData[16];
 		
-		
+		//putting data into static variables to transfer into nbayes class
 		num1=hotHas;
 		num2=normalHas;
 		num3=coolHas;
 		num4=tong;
 		
-	
-		
-		
-		
-	
+		num5=hotNHas;
+		num6=normalNHas;
+		num7=coolNHas;
+		num8=Ntong;
 
 	}
-	public double[] calc()
-	{
-		
-		double ar[] = new double [4];
-		
-		ar[0]=num1;
-		ar[1]=num2;
-		ar[2]=num3;
-		ar[3]=num4;
 	
-		return ar;
+	public double[] set2()
+	{
+		//putting calculated data into array
+		double arraytemp[] = new double [8];
+		
+		arraytemp[0]=num1;
+		arraytemp[1]=num2;
+		arraytemp[2]=num3;
+		arraytemp[3]=num4;
+		arraytemp[4]=num5;
+		arraytemp[5]=num6;
+		arraytemp[6]=num7;
+		arraytemp[7]=num8;
+	
+		
+		return arraytemp;
 		
 	}
-	double[] result=calc();
+	double[] resultTemp=set2();
 
 }
