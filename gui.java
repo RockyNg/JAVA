@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class gui  extends JFrame implements ActionListener
 {
@@ -15,11 +16,12 @@ public class gui  extends JFrame implements ActionListener
 	private ButtonGroup group1,group2,group3;
 	private JButton b1,b2;
 	private Font big;
+	private String one,two,three,four="hey";
 	//declare variables to store user input
 	private double temp,aches,soreThroat,chance=0;
 	
-	private JList peoplelist;
-	private static String[] people= {"bacon","bacon2","bacon3","bacon4"};
+	
+	ArrayList<String> people = new ArrayList<String>();
 	//bring in calculations from nbayes class
 	nbayes finalCalculations =new nbayes();
 	
@@ -33,6 +35,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.temp=lastList[0];
+			one="Hot";
 			
 		}
 		
@@ -42,7 +45,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.temp=lastList[1];
-		     
+			one="Normal";
 		}
 		
 	};
@@ -51,7 +54,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.temp=lastList[2];
-		     
+			one="Cool";
 		}
 		
 	};
@@ -60,7 +63,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.aches=lastList[4];
-		     
+			two="Yes";
 		}
 		
 	};
@@ -69,7 +72,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.aches=lastList[5];
-		     
+			two="No";
 		}
 		
 	};
@@ -78,7 +81,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.soreThroat=lastList[6];
-		     
+			three="Yes";
 		}
 		
 	};
@@ -87,7 +90,7 @@ public class gui  extends JFrame implements ActionListener
 		public void actionPerformed(ActionEvent e) 
 		{
 			gui.this.soreThroat=lastList[7];
-		     
+			three="No";
 			
 			
 		}
@@ -106,9 +109,10 @@ public class gui  extends JFrame implements ActionListener
 		b1= new JButton("Submit");
 		b2= new JButton("Another diagnosis");
 		
-		peoplelist= new JList(people);
-		peoplelist.setVisibleRowCount(3);
-		peoplelist.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		
+		
+		
+		
 		
 		tempH = new JRadioButton("Hot",false);
 		tempN = new JRadioButton("Normal",false);
@@ -118,15 +122,7 @@ public class gui  extends JFrame implements ActionListener
 		sThroatY = new JRadioButton("Yes",false);
 		sThroatN = new JRadioButton("No",false);
 		
-		
-		add(tempH);
-		add(tempN);
-		add(tempC);
-		add(achesY);
-		add(achesN);
-		add(sThroatY);
-		add(sThroatN);
-		
+
 		group1 =new ButtonGroup();
 		group2 =new ButtonGroup();
 		group3 = new ButtonGroup();
@@ -166,8 +162,19 @@ public class gui  extends JFrame implements ActionListener
 		add(p2,BorderLayout.SOUTH);
 		add(p3,BorderLayout.SOUTH);
 		add(p4,BorderLayout.SOUTH);
-		add(new JScrollPane(peoplelist));
 		
+		
+		people.add("Temperature, ____Aches, ____Sore Throat,_____Tongsillitis");
+		people.add("Person 1:"+one+","+two+","+three+","+four);
+		people.add(two);
+		people.add(three);
+		people.add(four);
+		JList<String> showList = new JList<>(people.toArray(new String[0]));
+		JScrollPane scrollPane = new JScrollPane(showList);
+		add(scrollPane);
+		
+		 
+		 
 		p1.add(label1);
 		p1.add(tempH);
 		p1.add(tempN);
@@ -188,6 +195,9 @@ public class gui  extends JFrame implements ActionListener
 		b1.addActionListener(this);
 		b2.addActionListener(this);
 		
+	
+		
+		
 
 		//wait for event to happen, whatever the user selects will enter the correct probability
 		  
@@ -198,15 +208,18 @@ public class gui  extends JFrame implements ActionListener
 		achesN.addActionListener(noA);
 		sThroatY.addActionListener(yesS);
 		sThroatN.addActionListener(noS);
-		
 
+		
+		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		if (e.getSource() ==b1)
 		   {	
 			chance=((soreThroat*aches)*(temp*lastList[3]));
+	
 			if(chance==0)
 			{
 				JOptionPane.showMessageDialog(this,"You have not enter all your symptpms");
@@ -214,23 +227,30 @@ public class gui  extends JFrame implements ActionListener
 			else
 			{
 				
+			
+				
 				DecimalFormat df = new DecimalFormat("#.00"); 
 				chance*=100;
 				if(chance>=10)
 				{
 					JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis\n YOU HAVE TONSILLITIS!");
-					
+					four="Yes";
 				}
 				else
 				{
 					
 				
 			    JOptionPane.showMessageDialog(this,(df.format(chance))+"% chance of having tongsillitis\n You don't have tongsillitis");
+			    four="No";
+			    
 			}
 			
+				
 			  	   
 		     	
-		   } }
+		   } 
+			
+			}
 		if (e.getSource() ==b2)
 		   {	
 			
@@ -243,9 +263,7 @@ public class gui  extends JFrame implements ActionListener
 			        group1.clearSelection();
 			        group2.clearSelection();
 			        group3.clearSelection();
-
-
-			
+			        
 		   } 
 		
 	}
