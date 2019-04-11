@@ -1,7 +1,7 @@
 /*
  * Author:Rocky Ng
  * Date: 11-04-19
- * Description: A machine learning prediction program for Tongsillitis*/
+ * Description: A machine learning prediction program for Tonsillitis*/
 package rocky;
 
 public class Control {

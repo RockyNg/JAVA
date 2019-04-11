@@ -6,9 +6,12 @@ import java.util.*;
 
 public class readfile 
 {
+	
 	private Scanner x,y;
-	private int HotYesTon,NormalYesTon,CoolYesTon,AchesYesTon,NoAchesYesTon,YesSThroatYesTon,NoSThroatYesTon,HotNoTon,NormalNoTon=0;
-	private int CoolNoTon,AchesNoTon,NoAchesNoTon,YesSThroatNoTon,NoSThroatNoTon,HaveTon,HaveNoTon,train,t2,rows=0;
+	private int HotYesTon,NormalYesTon,CoolYesTon,HotNoTon,NormalNoTon,CoolNoTon=0;
+	private int AchesYesTon,NoAchesYesTon, AchesNoTon,NoAchesNoTon=0;
+	private int YesSThroatYesTon,NoSThroatYesTon,YesSThroatNoTon,NoSThroatNoTon=0;
+	private int HaveTon,HaveNoTon,train,t2,rows=0;
 	private static int a11,a12,a13,b11,b12,c11,c12,a14,a15,a16,b13,b14,c13,c14,d11,d12,t12;
 	private double practise=0.70;
 	
@@ -41,7 +44,7 @@ public class readfile
 	{
 		return rows;
 	}
-	//return 70% of rows to practise on
+	//return 70% of rows to practice on
 	public int getT2()
 	{
 		t2=(int)(rows*practise+1);
